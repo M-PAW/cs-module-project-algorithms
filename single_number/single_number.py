@@ -5,7 +5,29 @@ Returns: an integer
 def single_number(arr):
     # Your code here
 
-    pass
+    # set() removes duplicates, it's a greedy solution
+
+    # return 2 * sum(set(arr)) - sum(arr)
+
+    # Create a list for the unmatched numbers
+    unmatched_number = []
+
+    # Iterate through the list
+    for n in arr:
+        # Set default for found
+        found = False
+
+        # Enumerate through the arr to compare
+        for index, item in enumerate(unmatched_number):
+            # if equals pop and set found to true
+            if item == n:
+                unmatched_number.pop(index)
+                found = True
+                break
+        # if not found dupl, then append to unmatched and return
+        if not found:
+            unmatched_number.append(n)
+    return unmatched_number[0]
 
 
 if __name__ == '__main__':
